@@ -7,7 +7,7 @@ def minOperations(n):
 
     if n <= 1:
         return 0
-    elif is_prime(n):
+    elif is_n_prime(n):
         return n
     else:
         prime = small_prime(n)
@@ -15,7 +15,7 @@ def minOperations(n):
             return prime + minOperations(int(n/prime))
 
 
-def is_prime(n):
+def is_n_prime(n):
 
     result = True
     for i in range(2, int(sqrt(n)) + 1):
