@@ -1,23 +1,34 @@
 #!/usr/bin/python3
 """minimum operations"""
+from math import sqrt
 
 
 def minOperations(n):
+
     if n <= 1:
         return 0
-
-    operations = 0
-    buffer = 1
-
-    while buffer < n:
-        if n % buffer == 0:
-            operations += 1
-            buffer = n // buffer
-        else:
-            operations += 1
-            buffer += buffer
-
-    if buffer == n:
-        return operations
+    elif is_prime(n):
+        return n
     else:
-        return 0
+        prime = small_prime(n)
+        if prime:
+            return prime + minOperations(int(n/prime))
+
+
+def is_prime(n):
+
+    result = True
+    for i in range(2, int(sqrt(n)) + 1):
+        if n % i == 0:
+            result = False
+    return result
+
+
+def small_prime(n):
+
+    result = None
+    for i in range(2, int(n/2 + 1)):
+        if n % i == 0:
+            result = i
+            break
+    return result
