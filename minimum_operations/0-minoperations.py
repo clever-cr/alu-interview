@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""minimum operations"""
+
+
 def minOperations(n):
     if n <= 1:
         return 0
